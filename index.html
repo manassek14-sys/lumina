@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0f0f1a" />
+  <meta name="description" content="Lumina — Un espace inspirant où les âmes partagent des messages, créent leur profil et s'élèvent ensemble." />
+  <title>Lumina — Partagez l'inspiration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Landing / Auth Screen -->
+  <div id="landing" class="screen active">
+    <div class="bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    
+    <div class="landing-content">
+      <div class="logo">
+        <span class="logo-icon">✦</span>
+        <h1>Lumina</h1>
+      </div>
+      <p class="tagline">Un cercle où chaque mot éclaire un autre</p>
+      
+      <div class="quote-box">
+        <p id="rotating-quote">« La lumière que tu cherches est déjà en toi. »</p>
+      </div>
+
+      <div class="auth-card">
+        <div class="tabs">
+          <button class="tab active" data-tab="join">Rejoindre</button>
+          <button class="tab" data-tab="create">Créer un profil</button>
+        </div>
+
+        <!-- Join existing (local) -->
+        <form id="join-form" class="auth-form active">
+          <div class="input-group">
+            <label for="join-name">Ton pseudo</label>
+            <input type="text" id="join-name" placeholder="Ex: ÉtoileVoyageuse" maxlength="20" required />
+          </div>
+          <button type="submit" class="btn primary">Entrer dans le cercle</button>
+        </form>
+
+        <!-- Create profile -->
+        <form id="create-form" class="auth-form">
+          <div class="input-group">
+            <label for="create-name">Pseudo</label>
+            <input type="text" id="create-name" placeholder="Choisis un nom inspirant" maxlength="20" required />
+          </div>
+          <div class="input-group">
+            <label for="create-bio">Une phrase qui te représente</label>
+            <textarea id="create-bio" placeholder="Ex: Je cherche la beauté dans les petits moments..." maxlength="120" rows="2"></textarea>
+          </div>
+          <div class="input-group">
+            <label>Couleur d'âme</label>
+            <div class="color-picker">
+              <button type="button" class="color-btn active" data-color="#7c6af5" style="background:#7c6af5"></button>
+              <button type="button" class="color-btn" data-color="#f59e0b" style="background:#f59e0b"></button>
+              <button type="button" class="color-btn" data-color="#10b981" style="background:#10b981"></button>
+              <button type="button" class="color-btn" data-color="#ec4899" style="background:#ec4899"></button>
+              <button type="button" class="color-btn" data-color="#06b6d4" style="background:#06b6d4"></button>
+              <button type="button" class="color-btn" data-color="#8b5cf6" style="background:#8b5cf6"></button>
+            </div>
+          </div>
+          <button type="submit" class="btn primary">Créer mon profil</button>
+        </form>
+      </div>
+
+      <p class="footer-note">Tout reste sur ton appareil • Partage le lien pour inviter d'autres âmes</p>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div id="app" class="screen">
+    <header class="app-header">
+      <div class="header-left">
+        <span class="logo-small">✦ Lumina</span>
+      </div>
+      <div class="header-right">
+        <button id="profile-btn" class="avatar-btn" title="Mon profil"></button>
+      </div>
+    </header>
+
+    <main class="chat-container">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <h3>Cercle actif</h3>
+          <div id="online-users" class="users-list"></div>
+        </div>
+        <div class="sidebar-section quotes-section">
+          <h3>Éclats du jour</h3>
+          <div id="daily-quotes" class="daily-quotes"></div>
+        </div>
+      </aside>
+
+      <section class="messages-area">
+        <div id="messages" class="messages-list"></div>
+        
+        <form id="message-form" class="message-composer">
+          <input type="text" id="message-input" placeholder="Partage une pensée, une gratitude, un rêve..." maxlength="500" autocomplete="off" />
+          <button type="submit" class="send-btn" aria-label="Envoyer">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- Profile Modal -->
+  <div id="profile-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-modal" id="close-profile">×</button>
+      <div id="profile-view"></div>
+      <button id="logout-btn" class="btn secondary">Quitter le cercle</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
